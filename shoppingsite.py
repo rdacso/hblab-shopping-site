@@ -105,11 +105,23 @@ def add_to_cart(melon_id):
     page and display a confirmation message: 'Melon successfully added to
     cart'."""
 
-    if melon_id in session['cart']:
-        session['cart'][melon_id] += 1
+    print session
+
+    if 'cart' in session.keys():
+        if melon_id in session['cart']:
+            session['cart'][melon_id] += 1
+        else:
+            session['cart'][melon_id] = 1
+
     else: 
-        session["cart"] = {melon_id: 1} 
+        session["cart"] = {melon_id: 1}
+
+    cart = session['cart']
+
     print session['cart']
+
+
+    flash('Your melon has been successfully added to cart')
 
     # TODO: Finish shopping cart functionality
 
